@@ -99,10 +99,10 @@
 
             function loopObj(obj, el, parent) {
                 for (i = 0, keys = Object.keys(obj); i < keys.length; i++) {
-                    var li = document.createElement(el);
-                    li.textContent = keys[i] + ": " + obj[keys[i]];
+                    var newEl = document.createElement(el);
+                    newEl.textContent = keys[i] + ": " + obj[keys[i]];
 
-                    parent.appendChild(li);
+                    parent.appendChild(newEl);
                 }
             }
 
