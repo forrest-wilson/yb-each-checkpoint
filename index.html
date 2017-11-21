@@ -11,7 +11,100 @@
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
+            //First the array
+            var arr = [22,10,15,121,15,44,48,47,55,91,12,10];
             
+            $.each(arr, function( index, value ) {
+                console.log( index + ": " + value );
+            });
+
+
+            //We can also use $.each to loop over an object
+            var objA = {
+                "flammable": "inflammable",
+                "duh": "no duh",
+                "really": "yes",
+                "still reading?": "thats a bummer man!"
+            };
+
+            $.each( objA, function( key, value ) {
+                console.log( key + ": " + value );
+            });
+
+            // *Checkpoint:
+            // 1. Use $.each (and possibly some extra internal code) to print all of the eggs to the console.
+            // 2. After step 1. Place the eggs into 2 seperate lists within the DOM. One titled Array Basket & one titled Object Basket. 
+
+            var foodBagArr = ['steak', 'noodles', 'egg1', 'chicken', 'pasta', 'mushrooms', 'salad', 'egg2', 'egg3', 'egg4', 'butter', 'beer', 'milk', 'egg5']
+            var foodBagObj = {
+                "FoodA": "egg",
+                "FoodB": "carrots",
+                "FoodC": "beans",
+                "FoodD": "egg",
+                "FoodE": "apples",
+                "FoodF": "steak",
+                "FoodG": "egg"
+            }
+
+            // My Code
+
+            var eggArr = [];
+            var eggObj = {};
+
+            // Populate the eggArr
+            $.each(foodBagArr, function(index, value) {
+                if (value.includes("egg")) {
+                    eggArr.push(value);
+                }
+            });
+
+            // Populate the eggObj
+            $.each(foodBagObj, function(key, value) {
+                if (value.includes("egg")) {
+                    eggObj[key] = value;
+                }
+            });
+
+            console.log(eggArr);
+            console.log(eggObj);
+
+            // Append to doc
+
+            // Array
+
+            var body = document.getElementsByTagName("body")[0];
+
+            var arrTitle = document.createElement("h2");
+            arrTitle.textContent = "Array Basket";
+            body.appendChild(arrTitle);
+
+            var arrUl = document.createElement("ul");
+
+            for (i = 0; i < eggArr.length; i++) {
+                var li = document.createElement("li");
+                li.textContent = eggArr[i];
+
+                arrUl.appendChild(li);
+            }
+
+            body.appendChild(arrUl);
+
+            // Object
+
+            var objTitle = document.createElement("h2");
+            objTitle.textContent = "Object Basket";
+            body.appendChild(objTitle);
+
+            var objUl = document.createElement("ul");
+
+            for (i = 0, keys = Object.keys(eggObj); i < keys.length; i++) {
+                var li = document.createElement("li");
+                li.textContent = keys[i] + ": " + eggObj[keys[i]];
+
+                objUl.appendChild(li);
+            }
+
+            body.appendChild(objUl);
         });
     </script>
 </body>
