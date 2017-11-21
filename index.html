@@ -97,12 +97,16 @@
 
             var objUl = document.createElement("ul");
 
-            for (i = 0, keys = Object.keys(eggObj); i < keys.length; i++) {
-                var li = document.createElement("li");
-                li.textContent = keys[i] + ": " + eggObj[keys[i]];
+            function loopObj(obj) {
+                for (i = 0, keys = Object.keys(obj); i < keys.length; i++) {
+                    var li = document.createElement("li");
+                    li.textContent = keys[i] + ": " + obj[keys[i]];
 
-                objUl.appendChild(li);
+                    objUl.appendChild(li);
+                }
             }
+
+            loopObj(eggObj);
 
             body.appendChild(objUl);
         }); 
